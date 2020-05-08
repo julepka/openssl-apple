@@ -67,15 +67,15 @@ if [ $FWTYPE == "dynamic" ]; then
         elif [[ $PLATFORM == AppleTV* ]]; then
             MIN_SDK="-tvos_version_min 11.0"
         elif [[ $PLATFORM == MacOSX* ]]; then
-            MIN_SDK="-macosx_version_min 10.11"
+            MIN_SDK="-macosx_version_min 10.9"
         elif [[ $PLATFORM == iPhoneSimulator* ]]; then
-            MIN_SDK="-ios_simulator_version_min 11.0"
+            MIN_SDK="-ios_simulator_version_min 8.0"
         elif [[ $PLATFORM == WatchOS* ]]; then
             MIN_SDK="-watchos_version_min 4.0"
         elif [[ $PLATFORM == WatchSimulator* ]]; then
             MIN_SDK="-watchos_simulator_version_min 4.0"
         else
-            MIN_SDK="-ios_version_min 11.0"
+            MIN_SDK="-ios_version_min 8.0"
         fi
 
         #cd $TARGETDIR
