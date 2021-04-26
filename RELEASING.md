@@ -17,15 +17,14 @@ How to update to newer OpenSSL version, build, and publish a release.
 
    Also update tarball checksums in [`build-libssl.sh`](build-libssl.sh).
 
-   Update binary framework link with the upcoming version in [`Package.swift`](Package.swift) file.
-   https://github.com/cossacklabs/openssl-apple/releases/download/1.1.10701/openssl-static-xcframework.zip
-
 3. **Update platform configuration.**
 
    Things like minimum OS SDK versions, architectures, etc.
    You can find all this in the [`Makefile`](Makefile).
 
 4. **Build OpenSSL.**
+
+   To build from scratch - remove output folder.
 
    ```shell
    make
@@ -35,12 +34,25 @@ How to update to newer OpenSSL version, build, and publish a release.
    Not only it builds the library, this also packages it,
    and updates the project specs.
 
-5. **Commit, tag, push the release.**
+5. **Update SPM package settings**
+
+	 In the [`Package.swift`](Package.swift) file
+     update binary framework link with the upcoming version (semver format)
+     https://github.com/cossacklabs/openssl-apple/releases/download/1.1.10701/openssl-static-xcframework.zip
+
+     Also, update xcframework checksum.
+ 
+     ```shell
+     swift package compute-checksum output/openssl-static-xcframework.zip
+     ```
+
+6. **Commit, tag, push the release.**
 
    Tag should be in a semver format.
 
    ```shell
    git add carthage
+   git add Package.swift
    git commit -S -e -m "OpenSSL 1.1.1g"
    git tag -s -e -m "OpenSSL 1.1.1g" 1.1.10701
    git push origin cossacklabs # Push the branch
@@ -54,7 +66,7 @@ How to update to newer OpenSSL version, build, and publish a release.
    Congratulations!
    You have just published broken Carthage and SPM packages :)
 
-6. **Publish GitHub release with binary framework files.**
+7. **Publish GitHub release with binary framework files.**
 
    Go to GitHub release page for the tag:
 
@@ -67,7 +79,7 @@ How to update to newer OpenSSL version, build, and publish a release.
    Congratulations!
    You should have fixed the Carthage and SPM packages with this.
 
-7. **Publish podspec.**
+8. **Publish podspec.**
 
    ```shell
    pod trunk push cocoapods/CLOpenSSL.podspec

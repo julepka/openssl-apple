@@ -120,7 +120,7 @@ ifeq ($(GOAL),specs)
 	@echo
 	@echo "    # The tag must contain the 'semversified' version of OpenSSL"
 	@echo "    # (e.g., $$(cat "$(OUTPUT)/version") instead of $(VERSION))"
-	@echo "    git tag -sem \"OpenSSL $(VERSION)\" v$$(cat "$(OUTPUT)/version")"
+	@echo "    git tag -sem \"OpenSSL $(VERSION)\" $$(cat "$(OUTPUT)/version")"
 	@echo "    git push --tags"
 	@echo
 	@echo "Finally, create a pre-release on GitHub from this tag:"
