@@ -17,6 +17,6 @@ let package = Package(
                       url:"https://github.com/cossacklabs/openssl-apple/releases/download/1.1.10803/openssl-static-xcframework.zip",
                       // Run from package directory:
                       // swift package compute-checksum output/openssl-static-xcframework.zip
-                      checksum: "dd884d18e49fd46a4df2757b57b3862003b8bf12bd792459bef20e68ccacb9d5"),
+                      checksum: "4e03d2d4d5ee25216dc6353dc3d3336a23ee7191533fe9951ad607510b758a3b"),
     ]
 )
