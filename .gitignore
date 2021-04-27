@@ -14,6 +14,7 @@ include/openssl
 *.xcodeproj/project.xcworkspace
 *.xcodeproj/xcuserdata
 Pods
+.swiftpm/
 
 # Cossack Labs packaging
 output

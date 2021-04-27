@@ -24,6 +24,8 @@ How to update to newer OpenSSL version, build, and publish a release.
 
 4. **Build OpenSSL.**
 
+   To build from scratch - remove output folder.
+
    ```shell
    make
    ```
@@ -32,14 +34,29 @@ How to update to newer OpenSSL version, build, and publish a release.
    Not only it builds the library, this also packages it,
    and updates the project specs.
 
-5. **Commit, tag, push the release.**
+5. **Update SPM package settings**
+
+	 In the [`Package.swift`](Package.swift) file
+     update binary framework link with the upcoming version (semver format)
+     https://github.com/cossacklabs/openssl-apple/releases/download/1.1.10701/openssl-static-xcframework.zip
+
+     Also, update xcframework checksum.
+ 
+     ```shell
+     swift package compute-checksum output/openssl-static-xcframework.zip
+     ```
+
+6. **Commit, tag, push the release.**
+
+   Tag should be in a semver format.
 
    ```shell
    git add carthage
+   git add Package.swift
    git commit -S -e -m "OpenSSL 1.1.1g"
-   git tag -s -e -m "OpenSSL 1.1.1g" v1.1.10701
+   git tag -s -e -m "OpenSSL 1.1.1g" 1.1.10701
    git push origin cossacklabs # Push the branch
-   git push origin v1.1.10701  # Push the tag
+   git push origin 1.1.10701  # Push the tag
    ```
 
    Make will remind you how to do this.
@@ -47,22 +64,22 @@ How to update to newer OpenSSL version, build, and publish a release.
    Take care to make signed commits and tags, this is important for vanity.
 
    Congratulations!
-   You have just published a broken Carthage package.
+   You have just published broken Carthage and SPM packages :)
 
-6. **Publish GitHub release with binary framework files.**
+7. **Publish GitHub release with binary framework files.**
 
    Go to GitHub release page for the tag:
 
-   https://github.com/cossacklabs/openssl-apple/releases/tag/v1.1.107
+   https://github.com/cossacklabs/openssl-apple/releases/tag/1.1.107
 
    press **Edit tag** and upload `*.zip` packages from `output` directory.
 
    Also, describe the release, press the **Publish release** when done.
 
    Congratulations!
-   You should have fixed the Carthage package with this.
+   You should have fixed the Carthage and SPM packages with this.
 
-7. **Publish podspec.**
+8. **Publish podspec.**
 
    ```shell
    pod trunk push cocoapods/CLOpenSSL.podspec
