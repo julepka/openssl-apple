@@ -25,7 +25,7 @@ set -u
 # SCRIPT DEFAULTS
 
 # Default version in case no version is specified
-DEFAULTVERSION="1.1.1h"
+DEFAULTVERSION="1.1.1k"
 
 # Default (=full) set of targets (OpenSSL >= 1.1.1) to build
 DEFAULTTARGETS=`cat <<TARGETS
@@ -37,7 +37,7 @@ tvos-sim-cross-x86_64 tvos64-cross-arm64
 TARGETS`
 
 # Minimum iOS/tvOS SDK version to build for
-IOS_MIN_SDK_VERSION="12.0"
+IOS_MIN_SDK_VERSION="10.0"
 MACOS_MIN_SDK_VERSION="10.15"
 CATALYST_MIN_SDK_VERSION="10.15"
 WATCHOS_MIN_SDK_VERSION="4.0"
@@ -487,6 +487,7 @@ OPENSSL_CHECKSUMS="
   1.0.2u ecd0c6ffb493dd06707d38b14bb4d8c2288bb7033735606569d8f90f89669d16
   1.1.1g ddb04774f1e32f0c49751e21b67216ac87852ceb056b75209af2443400636d46
   1.1.1h 5c9ca8774bd7b03e5784f26ae9e9e6d749c9da2438545077e6b3d755a06595d9
+  1.1.1k 892a0875b9872acd04a9fde79b1f943075d5ea162415de3047c327df33fbaee5
 "
 checksum_checked=false
 while read version expectedSHA256; do
